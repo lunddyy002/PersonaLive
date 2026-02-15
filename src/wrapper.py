@@ -139,8 +139,10 @@ class PersonaLive:
 
         try:
             self.enable_xformers_memory_efficient_attention()
+            self.vae.enable_slicing()
+            self.vae.enable_tiling()
         except Exception as e:
-            print("Failed to enable xformers:", e)
+            print("Failed to enable memory optimizations:", e)
     
     def reset(self):
         self.first_frame = True
